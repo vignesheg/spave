@@ -90,7 +90,7 @@ $("#signinForm").submit(function (e) {
                     $("#dispname").slideDown();
                 } else {
                     localStorage.setItem("spave-name", user.displayName);
-                    window.location.href = "/";
+                    window.location.href = "/spave/";
                 }
             } else {
                 alert("Please verify your email before logging in.");
@@ -188,7 +188,7 @@ $("#teamForm").submit(function (e) {
                 // Success
                 console.log("Display name updated successfully.");
                 alert("Display name updated successfully!");
-                window.location.href = "/"
+                window.location.href = "/spave/"
             }).catch((error) => {
                 // Handle errors
                 console.error("Error updating display name:", error);
@@ -249,7 +249,7 @@ $("#logout").click(function() {
         localStorage.removeItem("spave-hashed"); 
         localStorage.removeItem("spave-name"); 
         alert("Logged out successfully!");
-        window.location.href = "../";
+        window.location.href = "/spave/";
     }).catch((error) => {
         alert("Error logging out: " + error.message);
     });
