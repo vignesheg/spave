@@ -17,7 +17,7 @@ $("#event").change(function () {
 
   myacc.click(()=>{
     if(localStorage.getItem("spave-email") == null){
-  window.location.href ="../login"
+  window.location.href ="/spave/login"
     }else{
     
     myaccAcnt.slideDown()
@@ -28,7 +28,7 @@ $("#event").change(function () {
 
   reg.click(()=>{
     if(localStorage.getItem("spave-email") == null){
-      window.location.href ="../login"
+      window.location.href ="/spave/login"
         }else{
     myaccAcnt.hide()
     formCont.slideDown()
