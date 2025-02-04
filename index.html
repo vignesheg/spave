@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Members Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/jssha"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #3d3d3d;
+            color: white;
+        }
+
+        .navbar {
+            background-color: #3d3d3d !important;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+
+        .card {
+            background-color: #525252;
+            color: white;
+        }
+
+        .form-control {
+            background-color: #666;
+            color: white;
+            border: 1px solid #888;
+        }
+
+        .form-control::placeholder {
+            color: #bbb;
+        }
+
+        .btn-primary {
+            background-color: #be2edd;
+            border-color: #be2edd;
+        }
+
+        .btn-primary:hover {
+            background-color: #9b23ea;
+            border-color: #9b23ea;
+        }
+
+        .table {
+            color: white;
+        }
+
+        .table-dark {
+            background-color: #525252;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .count-body {
+            background-color: #4b4b4b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sofia-regular {
+  font-family: "Sofia", serif;
+}
+
+        /* Responsive Countdown Container */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            /* Wrap on smaller screens */
+            perspective: 1000px;
+        }
+
+        .glow-line {
+    width: 80%;  /* Adjust width */
+    height: 8px; /* Adjust thickness */
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+    margin: 20px auto;
+    animation: glow 1.5s infinite alternate;
+}
+
+        /* Countdown Item - Medium Size */
+        .countdown-item {
+            background-color: #be2edd;
+            color: white;
+            width: 100px;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* Flip Animation */
+        .countdown-item.flip {
+            transform: rotateX(-180deg);
+        }
+
+        /* Themed Countdown Heading */
+        .countdown-heading {
+            font-size: 36px;
+            color: #ff9ff3;
+            text-shadow: 0 0 10px #ff9ff3, 0 0 20px #be2edd, 0 0 30px #be2edd;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: glow 2s infinite alternate;
+        }
+        .headcss {
+            
+            color: #ffe0fb;
+            text-shadow: 0 0 10px #ff9ff3, 0 0 20px #be2edd, 0 0 30px #be2edd;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: glow 2s infinite alternate;
+        }
+
+        /* Glow Animation */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #ff9ff3, 0 0 20px #be2edd;
+            }
+
+            100% {
+                text-shadow: 0 0 15px #ff9ff3, 0 0 25px #be2edd;
+            }
+        }
+
+        /* Number Styling */
+        .countdown-number {
+            font-size: 48px;
+            /* Medium size */
+            font-weight: bold;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Label Styling */
+        .countdown-label {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Glitch Effect */
+        .glitch-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, #be2edd, transparent);
+            opacity: 0.3;
+            animation: glitch 2s infinite;
+        }
+
+        /* Glitch Animation */
+        @keyframes glitch {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            20% {
+                transform: translate(-3px, 3px);
+            }
+
+            40% {
+                transform: translate(-3px, -3px);
+            }
+
+            60% {
+                transform: translate(3px, 3px);
+            }
+
+            80% {
+                transform: translate(3px, -3px);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .countdown-item {
+                width: 100px;
+                height: 140px;
+            }
+
+            .countdown-number {
+                font-size: 36px;
+            }
+
+            .countdown-label {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-container {
+                gap: 10px;
+            }
+
+            .countdown-item {
+                width: 80px;
+                height: 120px;
+            }
+
+            .countdown-number {
+                font-size: 28px;
+            }
+
+            .countdown-label {
+                font-size: 12px;
+            }
+        }
+
+        .card {
+            background-color: #272628; /* Purple Theme */
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+            
+            transition: 0.3s;
+            text-align: center;
+        }
+        .card:hover {
+            box-shadow: 0 4px 8px #be2edd;
+        }
+        .card img {
+            width: 100px;  /* Small size */
+            height: 100px;
+            border-radius: 50%; /* Makes the image round */
+            margin: 15px auto;
+        }
+        .card-body {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-5">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><b>SPAVE</b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" id="home" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="myacc" href="#">My Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="reg" href="#">Book Slot</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="logout" href="#">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <br><br>
+        <!--Body Div-->
+        <h1 class=" text-center sofia-regular headcss display-1" >SPAVE</h1><br><br>
+            <div id="homecont">
+                <div class="glow-line"></div><br>
+
+                <h1 class="countdown-heading text-center"> Arise in</h1>
+                <div class="count-body">
+                    
+                    <div class="countdown-container">
+                        <div class="countdown-item" id="days">
+                            <div class="glitch-effect"></div>
+                            <div class="countdown-number">00</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item" id="hours">
+                            <div class="glitch-effect"></div>
+                            <div class="countdown-number">00</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item" id="minutes">
+                            <div class="glitch-effect"></div>
+                            <div class="countdown-number">00</div>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
+                        <div class="countdown-item" id="seconds">
+                            <div class="glitch-effect"></div>
+                            <div class="countdown-number">00</div>
+                            <div class="countdown-label">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glow-line"></div><br>
+                <!--Tech events-->
+                <h1 class="countdown-heading text-center">Technical Events</h1>
+                <div class="container mt-5">
+                    <div class="row g-4"> 
+                        <div class="col-12 col-md-4"> <!-- Responsive column -->
+                            <div class="card">
+                                <img src="images/old-scroll-paper-me-digital-painting-2023-v0-jn576yo8bcla1.webp" alt="Image 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Paper Presentation</h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <img src="images/51MmghSbXlL.jpg" alt="Image 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Poster Presentation</h5>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <img src="images/technological-background-abstract-computer-motherboard-600nw-1773622187.webp" alt="Image 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Project Presentation</h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                <div class="glow-line"></div><br>
+                <!--Tech events-->
+                <h1 class="countdown-heading text-center">Non Tech Events</h1>
+                <div class="container mt-5">
+                    <div class="row g-4"> 
+                        <div class="col-12 col-md-4"> <!-- Responsive column -->
+                            <div class="card">
+                                <img src="images/old-scroll-paper-me-digital-painting-2023-v0-jn576yo8bcla1.webp" alt="Image 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fun Collage</h5>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <img src="images/51MmghSbXlL.jpg" alt="Image 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ipl Auction</h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <img src="images/technological-background-abstract-computer-motherboard-600nw-1773622187.webp" alt="Image 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Music Fest</h5>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+        <div id="form-cont" style="display: none;">
+            <form id="teamForm">
+                <div class="mb-3">
+                    <label for="event" class="form-label">Select Event</label>
+                    <select class="form-select" id="event" required>
+                        <option value="paper">Paper Presentation</option>
+                        <option value="poster">Poster Presentation</option>
+                        <option value="project">Project Presentation</option>
+                    </select>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Team Head (Member 1)</h5>
+                        <input type="text" class="form-control mb-3" id="headName" placeholder="Enter Name" required>
+                        <input type="text" class="form-control" id="headRollNo" placeholder="Enter Roll No" required>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Member 2</h5>
+                        <input type="text" class="form-control mb-3" id="member2Name" placeholder="Enter Name" required>
+                        <input type="text" class="form-control" id="member2RollNo" placeholder="Enter Roll No" required>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Member 3</h5>
+                        <input type="text" class="form-control mb-3" id="member3Name" placeholder="Enter Name">
+                        <input type="text" class="form-control" id="member3RollNo" placeholder="Enter Roll No">
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Title</h5>
+                        <input type="text" class="form-control" id="title" placeholder="Enter Title" required>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Department</h5>
+                        <input type="text" class="form-control" id="department" placeholder="Enter Department" required>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">College</h5>
+                        <input type="text" class="form-control" id="college" placeholder="Enter College" required>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Phone Number(Whatsapp Number)</h5>
+                        <input type="text" class="form-control" id="phnnumber" placeholder="Enter Phone Number">
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Transaction ID</h5>
+                        <p>After payment, enter your Transaction ID</p>
+                        <input type="text" class="form-control" id="upiid" placeholder="Enter Transaction ID">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Submit Team Details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<!--Details-->
+    <div class="container mt-5" style="display: none;" id="myacc-cont">
+        <h2 class="text-center" id="name-user"></h2>
+    
+        <table class="table table-bordered mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Head Name</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="teamDataProfile">
+                <!-- Data will be inserted dynamically here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let name = document.getElementById("name-user")
+        name.innerHTML = "Hello "+localStorage.getItem("spave-name")
+        function updateCountdown() {
+            const eventDate = new Date('2025-03-01');
+            const now = new Date();
+            const difference = eventDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            updateCountdownDisplay('days', days);
+            updateCountdownDisplay('hours', hours);
+            updateCountdownDisplay('minutes', minutes);
+            updateCountdownDisplay('seconds', seconds);
+        }
+
+        function updateCountdownDisplay(id, value) {
+            const element = document.getElementById(id);
+            const numberElement = element.querySelector('.countdown-number');
+            const currentValue = numberElement.textContent;
+
+            if (currentValue !== padZero(value)) {
+                element.classList.add('flip');
+                setTimeout(() => {
+                    numberElement.textContent = padZero(value);
+                    element.classList.remove('flip');
+                }, 500);
+            }
+        }
+
+        function padZero(num) {
+            return num.toString().padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="profile/profile.js"></script>
+</body>
+
+</html>
