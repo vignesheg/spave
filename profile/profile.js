@@ -1,12 +1,10 @@
-$("#event").change(function () {
-    if ($(this).val() != "poster") {
-        $("#mem3").slideDown(); // Show form with animation
-    } else {
-        $("#mem3").slideUp(); // Hide form if no value is selected
-    }
+$("#event").change(function() {
+   if($(this).val() == "poster"){
+    $("#mem3").slideUp()
+   }else{
+    $("#mem3").slideDown()
+   }
 });
-
-
   let home = $("#home")
   let myacc = $("#myacc")
   let reg = $("#reg")
@@ -23,6 +21,7 @@ $("#event").change(function () {
     myaccAcnt.slideDown()
     formCont.hide()
     homecont.hide()
+    $("#rgbtn").hide()
     }
   })
 
@@ -33,6 +32,7 @@ $("#event").change(function () {
     myaccAcnt.hide()
     formCont.slideDown()
     homecont.hide()
+    $("#rgbtn").hide()
         }
   })
 
@@ -40,4 +40,12 @@ $("#event").change(function () {
     myaccAcnt.hide()
     formCont.hide()
     homecont.slideDown()
+    $("#rgbtn").show()
+  })
+
+  $("#rgbtn").click(()=>{
+    myaccAcnt.hide()
+    formCont.slideDown()
+    homecont.hide()
+    $("#rgbtn").hide()
   })
