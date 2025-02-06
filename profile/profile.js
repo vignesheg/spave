@@ -15,7 +15,7 @@ $("#event").change(function() {
 
   myacc.click(()=>{
     if(localStorage.getItem("spave-email") == null){
-  window.location.href ="/spave/login"
+  window.location.href ="../login"
     }else{
     
     myaccAcnt.slideDown()
@@ -27,7 +27,7 @@ $("#event").change(function() {
 
   reg.click(()=>{
     if(localStorage.getItem("spave-email") == null){
-      window.location.href ="/spave/login"
+      window.location.href ="../login"
         }else{
     myaccAcnt.hide()
     formCont.slideDown()
@@ -44,8 +44,13 @@ $("#event").change(function() {
   })
 
   $("#rgbtn").click(()=>{
+    if(localStorage.getItem("spave-email") == null){
+      window.location.href ="../login"
+        }else{
+        
     myaccAcnt.hide()
     formCont.slideDown()
     homecont.hide()
     $("#rgbtn").hide()
+        }
   })
