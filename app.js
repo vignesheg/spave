@@ -188,6 +188,7 @@ $("#teamForm").submit(function (e) {
                 // Success
                 console.log("Display name updated successfully.");
                 alert("Display name updated successfully!");
+                localStorage.setItem("spave-name", user.displayName);
                 window.location.href = "/spave/"
             }).catch((error) => {
                 // Handle errors
