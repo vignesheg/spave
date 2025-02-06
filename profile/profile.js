@@ -54,3 +54,35 @@ $("#event").change(function() {
     $("#rgbtn").hide()
         }
   })
+
+
+  $("#techevent").click(()=>{
+    if(localStorage.getItem("spave-email") == null){
+      window.location.href ="/spave/login"
+        }else{
+    myaccAcnt.hide()
+    formCont.slideDown()
+    homecont.hide()
+    $("#rgbtn").hide()
+        }
+  })
+  $("#event2").click(()=>{
+    if(localStorage.getItem("spave-email") == null){
+      window.location.href ="/spave/login"
+        }else{
+    myaccAcnt.hide()
+    formCont.slideDown()
+    homecont.hide()
+    $("#rgbtn").hide()
+        }
+  })
+  $("#event3").click(()=>{
+    if(localStorage.getItem("spave-email") == null){
+      window.location.href ="/spave/login"
+        }else{
+    myaccAcnt.hide()
+    formCont.slideDown()
+    homecont.hide()
+    $("#rgbtn").hide()
+        }
+  })
