@@ -295,6 +295,9 @@
         <br><br>
         <!--Body Div-->
         <h1 class=" text-center sofia-regular headcss display-1" >SPAVE</h1><br><br>
+        <div class="d-flex justify-content-center">
+            <button type="button" id="rgbtn" class="btn btn-primary">Book Slot</button>
+        </div><br><br>
             <div id="homecont">
                 <div class="glow-line"></div><br>
 
@@ -332,14 +335,14 @@
                         <div class="col-12 col-md-4"> <!-- Responsive column -->
                             <div class="card">
                                 <img src="images/old-scroll-paper-me-digital-painting-2023-v0-jn576yo8bcla1.webp" alt="Image 1">
-                                <div class="card-body">
+                                <div class="card-body" id="eventinfo">
                                     <h5 class="card-title">Paper Presentation</h5>
                                     
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
-                            <div class="card">
+                            <div class="card" id="eventinfo">
                                 <img src="images/51MmghSbXlL.jpg" alt="Image 2">
                                 <div class="card-body">
                                     <h5 class="card-title">Poster Presentation</h5>
@@ -347,7 +350,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-4" id="eventinfo">
                             <div class="card">
                                 <img src="images/technological-background-abstract-computer-motherboard-600nw-1773622187.webp" alt="Image 3">
                                 <div class="card-body">
@@ -528,10 +531,12 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="module" src="app.js"></script>
     <script type="module" src="profile/profile.js"></script>
+    <script type="module" src="app.js"></script>
+    
 </body>
 
 </html>
