@@ -12,9 +12,11 @@ $("#event").change(function() {
   let myaccAcnt = $("#myacc-cont")
   let formCont = $("#form-cont")
   let homecont = $("#homecont")
+  const token = localStorage.getItem("auth-token");
 
   myacc.click(()=>{
-    if(localStorage.getItem("spave-email") == null){
+    
+    if (!token) {
   window.location.href ="/spave/login"
     }else{
     
@@ -26,7 +28,8 @@ $("#event").change(function() {
   })
 
   reg.click(()=>{
-    if(localStorage.getItem("spave-email") == null){
+    
+    if (!token) {
       window.location.href ="/spave/login"
         }else{
     myaccAcnt.hide()
@@ -44,7 +47,8 @@ $("#event").change(function() {
   })
 
   $("#rgbtn").click(()=>{
-    if(localStorage.getItem("spave-email") == null){
+    
+    if (!token) {
       window.location.href ="/spave/login"
         }else{
         
@@ -55,9 +59,9 @@ $("#event").change(function() {
         }
   })
 
-
   $("#techevent").click(()=>{
-    if(localStorage.getItem("spave-email") == null){
+    
+    if (!token) {
       window.location.href ="/spave/login"
         }else{
     myaccAcnt.hide()
@@ -67,7 +71,8 @@ $("#event").change(function() {
         }
   })
   $("#event2").click(()=>{
-    if(localStorage.getItem("spave-email") == null){
+    
+    if (!token) {
       window.location.href ="/spave/login"
         }else{
     myaccAcnt.hide()
@@ -77,7 +82,8 @@ $("#event").change(function() {
         }
   })
   $("#event3").click(()=>{
-    if(localStorage.getItem("spave-email") == null){
+    
+    if (!token) {
       window.location.href ="/spave/login"
         }else{
     myaccAcnt.hide()
