@@ -108,10 +108,7 @@ $("#teamForm").submit(async function (e) {
     e.preventDefault();
 
     const token = localStorage.getItem("auth-token");  // Get stored auth token
-    if (!token) {
-        alert("Authentication token missing. Please login again.");
-        return;
-    }
+   
 
     const teamHead = { name: $("#headName").val(), rollNo: $("#headRollNo").val() };
     const member2 = { name: $("#member2Name").val(), rollNo: $("#member2RollNo").val() };
