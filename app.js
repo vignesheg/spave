@@ -168,10 +168,9 @@ $("#logout").click(function() {
  */
 async function fetchDataFromDatabase() {
     const token = localStorage.getItem("auth-token");
-    if (!token) {
-        alert("Authentication required. Please log in again.");
-        return;
-    }
+    if (token) {
+        
+    
 
     const userEmail = localStorage.getItem("spave-email").replace(/\./g, '_');
     const userRef = ref(db, `/teams/${userEmail}/events`);
@@ -195,6 +194,7 @@ async function fetchDataFromDatabase() {
             teamDataProfile.appendChild(paperRow);
         }
     });
+    }
 }
 
 fetchDataFromDatabase();
