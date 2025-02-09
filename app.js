@@ -65,11 +65,11 @@ $("#registerBtn").click(function () {
                     messageBox.css("color", "green").text("Verification email sent! Check your inbox.");
                 })
                 .catch((error) => {
-                    messageBox.text(error.message);
+                    messageBox.text("Enter Valid email");
                 });
         })
         .catch((error) => {
-            messageBox.text(error.message);
+            messageBox.text("Enter valid email");
         });
 });
 
@@ -93,11 +93,11 @@ $("#signinForm").submit(function (e) {
                     window.location.href = "/spave/";
                 }
             } else {
-                alert("Please verify your email before logging in.");
+                $("#message-signin").text("Please verify your email before logging in.");
             }
         })
         .catch((error) => {
-            alert("Error: " + error.message);
+            $("#message-signin").text("Invalid email or Password");
         });
 });
 
@@ -165,11 +165,11 @@ $("#teamForm").submit(function (e) {
     
     set(teamRef, teamData)
         .then(() => {
-            alert("Team data submitted successfully!");
+            alert("Slot Requested after payment verification your slot will be booked kindly check My account for status");
             $("#teamForm")[0].reset();
         })
         .catch((error) => {
-            console.error("Error submitting data: ", error);
+            console.error("Error submitting data: ");
         });
 });
 
@@ -187,17 +187,17 @@ $("#teamForm").submit(function (e) {
             }).then(() => {
                 // Success
                 console.log("Display name updated successfully.");
-                alert("Display name updated successfully!");
+                $("#errordisp").text("Display name updated successfully!");
                 localStorage.setItem("spave-name", user.displayName);
                 window.location.href = "/spave/"
             }).catch((error) => {
                 // Handle errors
-                console.error("Error updating display name:", error);
-                alert("Error updating display name: " + error.message);
+                
+                $("#errordisp").text("Error updating display name: ");
             });
         } else {
             console.log("No user is logged in.");
-            alert("No user is logged in.");
+            $("#errordisp").text("No user is logged in.");
         }
     }
 
@@ -206,13 +206,6 @@ $("#teamForm").submit(function (e) {
         console.log(displayValue)
         updateDisplayName(displayValue)
     })
-
-
-
-
-
-
-
 
     // Attach event listeners for verification and cancel buttons
     $(".verifyBtn").click(async function() {
