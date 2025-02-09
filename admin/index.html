@@ -45,14 +45,11 @@
             
             if (name === "" || password === "") {
                 $("#errorMsg").show();
-            } else {
-                $("#errorMsg").hide();
-                alert("Login Successful!");
-                // Here you can add Firebase authentication if needed
-            }
-
+            } 
             if(name === "admin" && password === "AAA@bbb123#wecandoit"){
                 localStorage.setItem("spave-admin-6369783358","true")
+                 $("#errorMsg").hide();
+                alert("Login Successful!");
                 window.location.href="/spave/admin/dashboard"
             }
         });
