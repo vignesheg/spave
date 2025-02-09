@@ -24,6 +24,7 @@ $("#event").change(function() {
     formCont.hide()
     homecont.hide()
     $("#rgbtn").hide()
+    $("#reghere").hide()
     }
   })
 
@@ -36,6 +37,7 @@ $("#event").change(function() {
     formCont.slideDown()
     homecont.hide()
     $("#rgbtn").hide()
+    $("#reghere").hide()
         }
   })
 
@@ -44,6 +46,7 @@ $("#event").change(function() {
     formCont.hide()
     homecont.slideDown()
     $("#rgbtn").show()
+    $("#reghere").show()
   })
 
   $("#rgbtn").click(()=>{
@@ -56,6 +59,7 @@ $("#event").change(function() {
     formCont.slideDown()
     homecont.hide()
     $("#rgbtn").hide()
+    $("#reghere").hide()
         }
   })
 
@@ -68,6 +72,7 @@ $("#event").change(function() {
     formCont.slideDown()
     homecont.hide()
     $("#rgbtn").hide()
+    $("#reghere").hide()
         }
   })
   $("#event2").click(()=>{
@@ -79,6 +84,7 @@ $("#event").change(function() {
     formCont.slideDown()
     homecont.hide()
     $("#rgbtn").hide()
+    $("#reghere").hide()
         }
   })
   $("#event3").click(()=>{
@@ -90,5 +96,6 @@ $("#event").change(function() {
     formCont.slideDown()
     homecont.hide()
     $("#rgbtn").hide()
+    $("#reghere").hide()
         }
   })
