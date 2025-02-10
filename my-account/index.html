@@ -15,12 +15,22 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    
+
     <script src="../js/myacc.js"></script>
 </head>
 
 <body>
-    <div id="accnavigation"></div>
+    <div id="accnavigation"></div><br>
+    <h2 id="ji"></h2>
+    <div class="container">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="p-2">
+                <h2 id="namedisplay"></h2>
+            </div>
+
+            <div class="p-2"><button class="btn btn-primary" id="logout">Log Out</button></div>
+        </div>
+    </div>
     <!--Details-->
     <div class="container mt-5" id="myacc-cont">
         <h2 class="text-center" id="name-user"></h2>
@@ -38,7 +48,8 @@
             </tbody>
         </table>
     </div>
-
+    <script>
+        $("#namedisplay").text("Hello, "+localStorage.getItem("spave-name"));</script>
     <script src="../js/comp.js"></script>
     <script type="module" src="../js/dbconn.js"></script>
 
