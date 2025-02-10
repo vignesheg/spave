@@ -51,4 +51,4 @@ function padZero(num) {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-console.log("home js connected");
+
