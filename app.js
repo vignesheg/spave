@@ -46,6 +46,7 @@ async function getAuthToken() {
 $("#registerBtn").click(function () {
     let email = $("#email").val().trim();
     let password = $("#password").val().trim();
+    let displayValue = $("#displayName").val().trim();
     let messageBox = $("#message");
 
     if (!email.includes("@") || !email.includes(".") || email === "") {
@@ -60,6 +61,7 @@ $("#registerBtn").click(function () {
     createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
             let user = userCredential.user;
+            updateDisplayName(displayValue);
             await sendEmailVerification(user);
             messageBox.css("color", "green").text("Verification email sent! Check your inbox.");
         })
@@ -108,7 +110,10 @@ $("#teamForm").submit(async function (e) {
     e.preventDefault();
 
     const token = localStorage.getItem("auth-token");  // Get stored auth token
-   
+    if (!token) {
+        alert("Authentication token missing. Please login again.");
+        return;
+    }
 
     const teamHead = { name: $("#headName").val(), rollNo: $("#headRollNo").val() };
     const member2 = { name: $("#member2Name").val(), rollNo: $("#member2RollNo").val() };
@@ -168,9 +173,7 @@ $("#logout").click(function() {
  */
 async function fetchDataFromDatabase() {
     const token = localStorage.getItem("auth-token");
-    if (token) {
-        
-    
+ 
 
     const userEmail = localStorage.getItem("spave-email").replace(/\./g, '_');
     const userRef = ref(db, `/teams/${userEmail}/events`);
@@ -194,7 +197,57 @@ async function fetchDataFromDatabase() {
             teamDataProfile.appendChild(paperRow);
         }
     });
-    }
 }
 
 fetchDataFromDatabase();
+
+// Function to update display name
+    function updateDisplayName(newDisplayName) {
+        const user = auth.currentUser;
+        if (user) {
+            updateProfile(user, {
+                displayName: newDisplayName
+            }).then(() => {
+                // Success
+                console.log("Display name updated successfully.");
+                $("#errordisp").text("Display name updated successfully!");
+                localStorage.setItem("spave-name", user.displayName);
+               window.location.href = "/spave/"
+            }).catch((error) => {
+                // Handle errors
+                
+                $("#errordisp").text("Error updating display name: ");
+            });
+        } else {
+            console.log("No user is logged in.");
+            $("#errordisp").text("No user is logged in.");
+        }
+    }
+
+    $("#nextBtn_dispName").click(()=>{
+        let displayValue = $("#displayNameForm").val().trim()
+        updateDisplayName(displayValue);
+    })
+
+    //reset password
+    $("#resetPassword").click(function () {
+        let email = $("#log-email").val().trim();
+    
+        if (!email) {
+            $("#message-signin").text("Please enter an email").css("color", "red");
+            return;
+        }
+    
+        
+        // Firebase Password Reset
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                document.getElementById("message-signin").innerText = "Password reset email sent!";
+                document.getElementById("message-signin").style.color = "green";
+            })
+            .catch((error) => {
+                document.getElementById("message-signin").innerText = error.message;
+                document.getElementById("message-signin").style.color = "red";
+            });
+    });
+    
