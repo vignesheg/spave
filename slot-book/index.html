@@ -120,51 +120,22 @@
 
     <script src="../js/comp.js"></script>
     <script type="module" src="../js/dbconn.js"></script>
+<script>
+    $("#event").change(function() {
+    if($(this).val() == "poster"){
+     $("#mem3").slideUp()
+    }else{
+     $("#mem3").slideDown()
+    }
+ });
 
-    <script>
-        $(document).ready(function () {
-            let registeredTitles = {}; // Store event-title registrations
+ if($("#event").val() == 'poster'){
+    $("#mem3").slideUp()
+ }else{
+    $("#mem3").slideDown()
+ }
 
-            // Restrict to 2 members for Poster Presentation
-            $("#event").change(function () {
-                if ($(this).val() === "poster") {
-                    $("#mem3 input").prop("disabled", true);
-                } else {
-                    $("#mem3 input").prop("disabled", false);
-                }
-            });
 
-            $("#teamForm").submit(function (e) {
-                e.preventDefault();
-
-                let event = $("#event").val();
-                let title = $("#title").val().trim();
-                let transactionID = $("#upiid").val().trim();
-
-                // Check if the title is already registered for the event
-                if (registeredTitles[event] && registeredTitles[event].includes(title)) {
-                    alert("This title has already been registered for the selected event.");
-                    return;
-                }
-
-                // Simulating payment verification (replace with real API check)
-                let validTransactionIDs = ["TXN12345", "TXN67890"]; // Sample valid transactions
-                if (!validTransactionIDs.includes(transactionID)) {
-                    alert("Invalid Transaction ID. Please check your payment status.");
-                    return;
-                }
-
-                // Store the registered title
-                if (!registeredTitles[event]) {
-                    registeredTitles[event] = [];
-                }
-                registeredTitles[event].push(title);
-
-                alert("Registration successful!");
-                this.submit();
-            });
-        });
-    </script>
-
+</script>
 </body>
 </html>
