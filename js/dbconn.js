@@ -57,6 +57,10 @@ $("#registerBtn").click(function () {
         messageBox.text("Enter a Password.");
         return;
     }
+    if (displayValue === "") {
+        messageBox.text("Enter your Name.");
+        return;
+    }
 
     createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
