@@ -8,3 +8,4 @@ $("#login-form").click(function() {
     $("#log-form-div").slideDown();
     $("#reg-form-div").slideUp();
 });
+
