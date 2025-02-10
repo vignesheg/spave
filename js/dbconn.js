@@ -167,18 +167,6 @@ $("#logout").click(function() {
     });
     $("#logoutModal").modal('hide');
 });
-$("#logoutoffcanv").click(function() {
-    signOut(auth).then(() => {
-        localStorage.removeItem("spave-email"); 
-        localStorage.removeItem("auth-token");  // Remove token
-        localStorage.removeItem("spave-name"); 
-        alert("Logged out successfully!");
-        window.location.href = "../";
-    }).catch((error) => {
-        alert("Error logging out: " + error.message);
-    });
-    $("#logoutModal").modal('hide');
-});
 
 /**
  * Fetch and display user team data using auth token
