@@ -80,7 +80,7 @@ width: 80%;  /* Adjust width */
 height: 8px; /* Adjust thickness */
 background: white;
 border-radius: 2px;
-box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+box-shadow: 0 0 5px white, 0 0 0px white, 0 0 0px white;
 margin: 20px auto;
 animation: glow 1.5s infinite alternate;
 }
