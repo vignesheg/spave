@@ -67,6 +67,7 @@ $("#registerBtn").click(function () {
             let user = userCredential.user;
             updateDisplayName(displayValue);
             await sendEmailVerification(user);
+            alert("verification link sent to your mail");
             messageBox.css("color", "green").text("Verification email sent! Check your inbox.");
         })
         .catch(() => {
