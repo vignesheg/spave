@@ -67,7 +67,6 @@ $("#registerBtn").click(function () {
             let user = userCredential.user;
             updateDisplayName(displayValue);
             await sendEmailVerification(user);
-            alert("verification link sent to your mail");
             messageBox.css("color", "green").text("Verification email sent! Check your inbox.");
         })
         .catch(() => {
@@ -123,6 +122,7 @@ $("#teamForm").submit(async function (e) {
     const teamHead = { name: $("#headName").val(), rollNo: $("#headRollNo").val() };
     const member2 = { name: $("#member2Name").val(), rollNo: $("#member2RollNo").val() };
     const member3 = { name: $("#member3Name").val(), rollNo: $("#member3RollNo").val() };
+    const member4 = { name: $("#member4Name").val(), rollNo: $("#member4RollNo").val() };
     
     const upiid = $("#upiid").val();
     const event = $("#event").val();
@@ -136,6 +136,7 @@ $("#teamForm").submit(async function (e) {
             head: teamHead,
             member2: member2,
             member3: event === "poster" ? null : member3,
+            member4: event === "poster" ? null : member4,
             title: titleevent,
             upi: upiid,
             department: dept,
@@ -181,6 +182,7 @@ async function fetchDataFromDatabase() {
  
 
     const userEmail = localStorage.getItem("spave-email").replace(/\./g, '_');
+    
     const userRef = ref(db, `/teams/${userEmail}/events`);
 
     onValue(userRef, (snapshot) => {
@@ -192,6 +194,12 @@ async function fetchDataFromDatabase() {
             const poster = data.poster.details;
             const posterRow = document.createElement('tr');
             posterRow.innerHTML = `<td>${poster.head.name}</td><td>${poster.title}</td><td>${poster.verified ? "Confirmed" : "Not Confirmed"}</td>`;
+            teamDataProfile.appendChild(posterRow);
+        }
+        if (data?.project) {
+            const project = data.project.details;
+            const posterRow = document.createElement('tr');
+            posterRow.innerHTML = `<td>${project.head.name}</td><td>${project.title}</td><td>${project.verified ? "Confirmed" : "Not Confirmed"}</td>`;
             teamDataProfile.appendChild(posterRow);
         }
 
